@@ -1,0 +1,102 @@
+============= 1 ===================
+Ziel
+Erstellen Sie eine Klasse MessListe, die eine einfach verkettete Liste von Messwerten (double) speichert und 
+verschiedene Operatoren überlädt, um die Arbeit mit der Liste intuitiv zu gestalten.
+
+Anforderungen
+
+
+Datenstruktur
+
+Verwenden Sie eine verkettete Liste mit einer internen Node-Struktur (enthält wert und next).
+Die Klasse MessListe soll die Anzahl der Elemente (anz) und einen Zeiger auf den Kopf (head) verwalten.
+
+
+
+Konstruktoren und Destruktor
+
+Standardkonstruktor: erstellt eine leere Liste.
+Copy-Konstruktor: erstellt eine tiefe Kopie einer bestehenden Liste.
+Destruktor: gibt den gesamten Speicher frei.
+
+
+
+Operatoren
+
+        int operator~() const { return anz; }  // ~ liefert die Anzahl der Messwerte im Objekt = Arraygröße
+        bool operator!() const { return anz == 0; } // "Not": Ist das Objekt leer?
+        double operator[](int i) const;     // [] nur zum Lesen des i-ten Elemente // (zum Lesen und Ändern müsste eine Referenz zurückgegeben werden!)
+        MessList operator+(double x) const; // füge einen einzelnen Wert zu einer Messreihe dazu
+        MessList operator+(const MessList &r) const; // hänge zwei Messreihen zusammen
+        MessList &operator+=(double x); // erweitere eine Messreihe um einen Wert
+        MessList &operator+=(const MessList &r); // erweitere eine Messreihe um eine Messreihe
+        MessList &operator=(const MessList &liste); //Tiefe Kopie (deep copy) der Liste.
+        operator double() const; // liefert den Mittelwert der Messreihe
+
+Testfälle (erwartetes Verhalten)
+
+Schreibe in main() kleine Tests. So weißt du, ob alles richtig funktioniert.
+
+================= 2 ========================
+
+Implementiere einen Binärsuchbaum (BST) als Template-Klasse Tree<T>, der:
+
+Werte vom Typ T speichert,
+typische Operationen bereitstellt (insert, contains, getHeight, getSumValues),
+rekursive Hilfsfunktionen intern nutzt,
+über Ausgabeoperatoren inorder ausgegeben werden kann.
+
+Vorgegebene Struktur
+
+
+Node<T>: Knoten mit privaten Membern data, left, right; Konstruktor setzt left/right = nullptr.
+Freundschaft für Tree<U> und die Ausgabeoperatoren (Node<U>&, Node<U>*).
+
+
+ITree<T> (Interface):
+insert(const T&), contains(const T&) const.
+
+
+Statistiken<T> (Interface):
+getHeight() const, getSumValues() const.
+
+
+Tree<T> (leitet von ITree<T> und Statistiken<T>):
+
+root (privat)
+öffentliche Methoden:
+
+insert(const T&) → ruft insertRec(Node<T>*&, const T&) (rekursiv).
+contains(const T&) const → iterativ ab Wurzel.
+getHeight() const → ruft height(Node<T>*) (rekursiv).
+getSumValues() const → ruft sumValues(Node<T>*) (rekursiv, Basiswert T{}).
+
+
+Destruktor: deleteRec(Node<T>*) (rekursiv, post-order).
+Ausgabeoperator operator<<(ostream&, const Tree<T>&) → nutzt operator<<(ostream&, const Node<T>*) für inorder.
+
+
+
+Ausgabeoperatoren (frei)
+
+operator<<(ostream&, const Node<T>&) → "Value: <data>".
+operator<<(ostream&, const Node<T>*) → inorder: left, data, right.
+operator<<(ostream&, const Tree<T>&) → druckt gesamten Baum via tree.root.
+
+Anforderungen / Hinweise
+
+Rekursiv über alle Elemente: insertRec, deleteRec, height, sumValues.
+Gezielte Einzeloperation (mit Schleife): contains.
+Sonderfälle: Leerer Baum korrekt behandeln (height=0, sum=T{}, contains=false, Ausgabe leer).
+Nach delete kein Zugriff auf gelöschte Knoten.
+
+Tests (im main, kurz)
+
+Tree<int>: einige Werte einfügen, contains, getHeight, getSumValues, Ausgabe.
+Optional: Tree<double>, Tree<string> zur Prüfung von Generik.
+
+==================================================
+
+TODO
+ex 12
+hinweise durchlesen

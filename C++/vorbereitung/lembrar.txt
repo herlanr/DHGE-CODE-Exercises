@@ -1,0 +1,9 @@
+- Operatoren
+- File I/O
+- virtual (implementation not necessary) and pure virtual (implementation necessary)
+- protected, private, public
+- inheritance
+- virtual method immer mit virtual descontruktor (virtual ~Class(){})
+- static variable initialisieren
+- what does klassenweites Member/Method mean?
+- bons exercicios: 7, 10, 11, A9

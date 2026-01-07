@@ -1,0 +1,1 @@
+gcc -I C:\SDL2-2.30.8\x86_64-w64-mingw32\include -o main.exe main.c sdlinterf.c -L C:\SDL2-2.30.8\x86_64-w64-mingw32\lib -static -lmingw32 -lSDL2main -lSDL2 -Wl,--no-undefined -lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lversion -luuid -static-libgcc -lhid -lsetupapi
